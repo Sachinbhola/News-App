@@ -1,4 +1,5 @@
-# NewsBusters App
+# <div align="center"><img src="app/src/main/res/drawable/icon_todo.png" alt="icon" width=40>  NewsBusters App </div>
+
 
 <div align="center">A News App with daily news updates using NewsAPI.org and interactive UI with the help of Chrome custom tabs and recycler view</div>
 
