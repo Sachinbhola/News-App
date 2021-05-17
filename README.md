@@ -47,14 +47,14 @@
 
 <hr>
 
-## Dependencies
+## Core Dependencies
 
-        - implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-        - implementation 'androidx.core:core-ktx:1.3.2'
-        - implementation 'com.android.volley:volley:1.2.0'
-        - implementation "androidx.browser:browser:1.3.0"
-        - implementation 'com.github.bumptech.glide:glide:4.11.0'
-        - kapt 'com.github.bumptech.glide:compiler:4.11.0'
+        - implementation 'androidx.core:core-ktx:1.3.2' (for additional  kotlin support)
+        - implementation 'com.android.volley:volley:1.2.0'  (for APPI call)
+        - implementation 'com.android.support:customtabs:25.2.0'  (for redirecting to chrome custom tab intent)
+        - implementation "androidx.browser:browser:1.3.0"  (for chrome browser support)
+        - implementation 'com.github.bumptech.glide:glide:4.11.0'  (for adding images through glide library)
+        
     
 
 <hr>
