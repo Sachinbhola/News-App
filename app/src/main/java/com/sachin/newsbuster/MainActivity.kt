@@ -2,6 +2,7 @@ package com.sachin.newsbuster
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity(), NewsAdapter.ItemClicked {
         adapter=NewsAdapter(this)
         rvNewsFeed.adapter=adapter
 
+
         }
 
     private fun fetchData() {
@@ -35,7 +37,9 @@ class MainActivity : AppCompatActivity(), NewsAdapter.ItemClicked {
             url,
             null,
             {
-            val newsJsonArray = it.getJSONArray("articles")
+                shimmerFrameLayout.stopShimmerAnimation()
+                shimmerFrameLayout.visibility = View.GONE
+                val newsJsonArray = it.getJSONArray("articles")
                 val newsArray = ArrayList<News>()
                 for(i in 0 until newsJsonArray.length()){
                     val newsJsonObject =newsJsonArray.getJSONObject(i)
@@ -45,10 +49,10 @@ class MainActivity : AppCompatActivity(), NewsAdapter.ItemClicked {
                         newsJsonObject.getString("url"),
                         newsJsonObject.getString("urlToImage"),
 
-                    )
+                        )
                     newsArray.add(news)
                 }
-     adapter.updateNews(newsArray)
+                adapter.updateNews(newsArray)
             },
             {
 
@@ -65,4 +69,15 @@ class MainActivity : AppCompatActivity(), NewsAdapter.ItemClicked {
         val customTabsIntent = builder.build();
         customTabsIntent.launchUrl(this, Uri.parse(item.url));
     }
+
+    override fun onResume() {
+        super.onResume()
+        shimmerFrameLayout.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        shimmerFrameLayout.stopShimmerAnimation()
+        super.onPause()
+    }
+
 }
